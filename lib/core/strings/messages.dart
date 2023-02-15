@@ -1,0 +1,10 @@
+// ignore_for_file: constant_identifier_names
+
+const ADD_SUCCESS_MESSAGE = "Post Added Successfully";
+const DELETE_SUCCESS_MESSAGE = "Post Deleted Successfully";
+const UPDATE_SUCCESS_MESSAGE = "Post Updated Successfully";
+const LOGGED_IN_MESSAGE = 'Logged in Successfully';
+const SIGNEDUP_IN_MESSAGE = 'Registered  Successfully';
+
+const UPDATE_PROFILE_SUCCESS_MESSAGE = "Profile Updated Successfuly";
+const UPDATE_PASSWORD_SUCCESS_MESSAGE = "Password Updated Successfuly";

@@ -7,7 +7,9 @@ version: 1.0.0+1
 
 environment:
   sdk: ">=2.18.6 <3.0.0"
+
 dependencies:
+  chewie: ^1.4.0
   conditional_builder_null_safety: ^0.0.6
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
@@ -15,11 +17,13 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.2
-  fluttertoast: ^8.1.3
+  flutter_rating_bar: ^4.0.1
+  fluttertoast: ^8.1.2
   image_picker: ^0.8.6+1
   internet_connection_checker: ^1.0.0+1
   intl: ^0.18.0
   uuid: ^3.0.7
+  video_player: ^2.5.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -31,6 +35,8 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/videos/
+
   fonts:
     - family: FigmaIcon
       fonts:
@@ -39,7 +45,6 @@ flutter:
     - family: IconBroken
       fonts:
         - asset: assets/fonts/IconBroken.ttf
-
     # - family: Inter
     #       fonts:
     #         - asset: assets/fonts/Inter-Bold.ttf

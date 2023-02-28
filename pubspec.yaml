@@ -15,6 +15,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.2
+  flutter_lorem: ^2.0.0
   fluttertoast: ^8.1.3
   image_picker: ^0.8.6+1
   internet_connection_checker: ^1.0.0+1
@@ -39,7 +40,6 @@ flutter:
     - family: IconBroken
       fonts:
         - asset: assets/fonts/IconBroken.ttf
-
     # - family: Inter
     #       fonts:
     #         - asset: assets/fonts/Inter-Bold.ttf

@@ -40,9 +40,9 @@ class _HeartState extends State<Heart> with SingleTickerProviderStateMixin {
     // _controller.forward();
     //* will fire every time our _controller emit a new value [0,1] by default  : _controller.value
     _controller.addListener(() {
-      print(_controller.value);
-      print(_colorAnimation.value);
-      print(_sizeAnimation.value);
+      // print(_controller.value);
+      // print(_colorAnimation.value);
+      // print(_sizeAnimation.value);
       //! we could use setState to flush out animation or use AnimationBuilder
       // setState(() {});
     });

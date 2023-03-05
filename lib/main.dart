@@ -1,5 +1,6 @@
 import 'package:app_ui/presentation/pages/animted_widgets/explicit_anim_page.dart';
 import 'package:app_ui/presentation/pages/animted_widgets/learn_tween_page.dart';
+import 'package:app_ui/presentation/pages/challenges/animation_challanges_page.dart';
 import 'package:app_ui/presentation/pages/scroll/scroll_page.dart';
 import 'package:flutter/material.dart';
 import 'package:app_ui/core/resources/app_themes.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       darkTheme: AppThemes.darkTheme,
       themeMode: ThemeMode.light,
-      home: LearnTweenPage(),
+      home: AnimationChallPage(),
     );
   }
 }

@@ -19,6 +19,10 @@ class AppConstant {
 
   static const logoImg =
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3DuUXG2ue_bB3rkt_3mFVm_ofkL1jyq_tRw&usqp=CAU';
+  static const avatarImg =
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYViFkOdDb4JV8KPbpWExIe_Ylme5xuPzDWg&usqp=CAU";
+  static const avatarImg2 =
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfucJDiD2X5YryZkS6IID1WcVcn952tnoY3A&usqp=CAU";
 }
 
 navigateTo(BuildContext context, Widget widget) {

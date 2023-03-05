@@ -7,12 +7,12 @@ class AppThemes {
   static ThemeData lightTheme = ThemeData(
     // fontFamily: 'Inter',
     scaffoldBackgroundColor: AppColors.white,
-    appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.white,
-      iconTheme: IconThemeData(color: AppColors.black),
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppColors.teal,
+      iconTheme: const IconThemeData(color: AppColors.white),
       elevation: 0,
-      titleTextStyle: TextStyle(
-        color: AppColors.black,
+      titleTextStyle: const TextStyle(
+        color: AppColors.white,
         fontWeight: FontWeight.w500,
         fontSize: 16,
       ),

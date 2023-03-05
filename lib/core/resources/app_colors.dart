@@ -10,6 +10,7 @@ class AppColors {
   static const Color red = Colors.red;
   static const Color grey = Color(0xffDFDFDF);
   static const Color mainText = Color(0xff848484);
+  static Color? teal = Colors.teal[400];
   static const LinearGradient linearBgColor = LinearGradient(
     begin: Alignment.topRight,
     end: Alignment.bottomRight,

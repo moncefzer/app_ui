@@ -13,6 +13,12 @@ class AppConstant {
   static const String replyCollection = 'replies';
   static const String profileImages = 'profileImages';
   static const String postsImages = 'postsImages';
+
+  static const backgroundImgUrl =
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3HCJlI_HQvwiok906NGGbyLwFCKes2Dx21Q&usqp=CAU';
+
+  static const logoImg =
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3DuUXG2ue_bB3rkt_3mFVm_ofkL1jyq_tRw&usqp=CAU';
 }
 
 navigateTo(BuildContext context, Widget widget) {

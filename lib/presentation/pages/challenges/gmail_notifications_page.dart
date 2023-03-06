@@ -66,6 +66,7 @@ class _GmailNotificationsPageState extends State<GmailNotificationsPage> {
               ),
             ),
             Expanded(
+              //*  track child scrolling
               child: NotificationListener<ScrollNotification>(
                 onNotification: (details) {
                   _onScrollDirecrion();

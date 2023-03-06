@@ -109,33 +109,53 @@ class _NotificationItem extends StatelessWidget {
   }
 }
 
-class _GmailFAB extends StatelessWidget {
+class _GmailFAB extends StatefulWidget {
   const _GmailFAB({
-    super.key,
     this.expanded = false,
     required this.onTap,
   });
 
-  final _minSize = 50.0;
-  final _maxSize = 145.0;
-  final _iconSize = 24.0;
-
   final bool expanded;
   final VoidCallback onTap;
+  @override
+  @override
+  State<_GmailFAB> createState() => _GmailFABState();
+}
+
+class _GmailFABState extends State<_GmailFAB> {
+  final _minSize = 50.0;
+
+  double _maxSize = 145.0;
+
+  final _iconSize = 24.0;
+  final _keyText = GlobalKey();
+
   // final void Function(bool value) onChanged;
+
+  void initState() {
+    //! wait after the first frame is rendered  [there is package flutter layout]
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        _maxSize = (_keyText.currentContext?.size?.width as double) +
+            _minSize +
+            _iconSize / 2;
+      });
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final position = _minSize / 2 - _iconSize / 2;
     return GestureDetector(
-      onTap: onTap,
+      onTap: widget.onTap,
       child: AnimatedContainer(
         curve: Curves.easeIn,
         decoration: BoxDecoration(
           color: Colors.blue[800],
           borderRadius: BorderRadius.circular(_maxSize),
         ),
-        width: expanded ? _maxSize : _minSize,
+        width: widget.expanded ? _maxSize : _minSize,
         height: _minSize,
         duration: const Duration(milliseconds: 250),
         child: Stack(
@@ -152,7 +172,8 @@ class _GmailFAB extends StatelessWidget {
               top: position,
               left: position + 1.5 * _iconSize,
               child: Text(
-                'Start Chat',
+                'Start Chat With my Friends',
+                key: _keyText,
                 style: context.headline4
                     .copyWith(color: Colors.white, height: 1.3),
               ),

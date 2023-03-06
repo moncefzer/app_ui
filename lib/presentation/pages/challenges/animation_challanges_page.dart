@@ -1,7 +1,7 @@
 import 'package:app_ui/presentation/pages/animted_widgets/learn_tween_page.dart';
 import 'package:app_ui/presentation/pages/challenges/gmail_notifications_page.dart';
 import 'package:app_ui/presentation/pages/challenges/shrink_top_list_page.dart';
-import 'package:app_ui/presentation/pages/route_animation/animate_route.dart';
+import 'package:app_ui/presentation/pages/route_animation/slide_right.dart';
 import 'package:flutter/material.dart';
 
 class ChallangePage {

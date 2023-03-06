@@ -1,4 +1,4 @@
-import 'package:app_ui/presentation/pages/route_animation/animate_route.dart';
+import 'package:app_ui/presentation/pages/route_animation/slide_right.dart';
 import 'package:app_ui/presentation/pages/route_animation/page_three.dart';
 import 'package:flutter/material.dart';
 

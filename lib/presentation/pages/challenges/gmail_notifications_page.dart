@@ -15,13 +15,16 @@ class _GmailNotificationsPageState extends State<GmailNotificationsPage> {
   final scrollController = ScrollController();
 
   void _onScrollDirecrion() {
-    if (scrollController.position.userScrollDirection ==
+    //! access [scrollController.positions.last] instead [scrollController.position]
+    /// the last is used only if there is just one scrollable child
+    /// solution link [https://stackoverflow.com/questions/53824944/flutter-exception-scrollcontroller-attached-to-multiple-scroll-views/70672454#70672454]
+    if (scrollController.positions.last.userScrollDirection ==
             ScrollDirection.reverse &&
         expanded) {
       setState(() {
         expanded = false;
       });
-    } else if (scrollController.position.userScrollDirection ==
+    } else if (scrollController.positions.last.userScrollDirection ==
             ScrollDirection.forward &&
         !expanded) {
       setState(() {
@@ -44,46 +47,49 @@ class _GmailNotificationsPageState extends State<GmailNotificationsPage> {
         onTap: () {},
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Card(
-                child: Row(
-                  children: const [
-                    SizedBox(width: 7),
-                    Icon(Icons.search),
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.all(13.0),
-                        child: Text('Search Conversations'),
-                      ),
+        child: NotificationListener<ScrollNotification>(
+          onNotification: (details) {
+            _onScrollDirecrion();
+            return true;
+          },
+          child: CustomScrollView(
+            controller: scrollController,
+            slivers: [
+              SliverAppBar(
+                floating: true,
+                backgroundColor: Colors.transparent,
+                automaticallyImplyLeading: false,
+                iconTheme: IconThemeData(color: Colors.black),
+                title: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Card(
+                    child: Row(
+                      children: const [
+                        SizedBox(width: 7),
+                        Icon(Icons.search),
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.all(13.0),
+                            child: Text('Search Conversations'),
+                          ),
+                        ),
+                        Icon(Icons.more_vert_outlined),
+                        SizedBox(width: 7),
+                      ],
                     ),
-                    Icon(Icons.more_vert_outlined),
-                    SizedBox(width: 7),
-                  ],
+                  ),
                 ),
               ),
-            ),
-            Expanded(
-              //*  track child scrolling
-              child: NotificationListener<ScrollNotification>(
-                onNotification: (details) {
-                  _onScrollDirecrion();
-                  return true;
-                },
-                child: ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  controller: scrollController,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
                     return const _NotificationItem();
                   },
-                  itemCount: 20,
+                  childCount: 20,
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

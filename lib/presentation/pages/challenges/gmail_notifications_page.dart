@@ -1,0 +1,165 @@
+import 'package:app_ui/core/helper/extensions/context_extensions.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter_lorem/flutter_lorem.dart';
+
+class GmailNotificationsPage extends StatefulWidget {
+  const GmailNotificationsPage({super.key});
+
+  @override
+  State<GmailNotificationsPage> createState() => _GmailNotificationsPageState();
+}
+
+class _GmailNotificationsPageState extends State<GmailNotificationsPage> {
+  bool expanded = false;
+  final scrollController = ScrollController();
+
+  void _onScrollDirecrion() {
+    if (scrollController.position.userScrollDirection ==
+            ScrollDirection.reverse &&
+        expanded) {
+      setState(() {
+        expanded = false;
+      });
+    } else if (scrollController.position.userScrollDirection ==
+            ScrollDirection.forward &&
+        !expanded) {
+      setState(() {
+        expanded = true;
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      floatingActionButton: _GmailFAB(
+        expanded: expanded,
+        onTap: () {},
+      ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                child: Row(
+                  children: const [
+                    SizedBox(width: 7),
+                    Icon(Icons.search),
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.all(13.0),
+                        child: Text('Search Conversations'),
+                      ),
+                    ),
+                    Icon(Icons.more_vert_outlined),
+                    SizedBox(width: 7),
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              child: NotificationListener<ScrollNotification>(
+                onNotification: (details) {
+                  _onScrollDirecrion();
+                  return true;
+                },
+                child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  controller: scrollController,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return const _NotificationItem();
+                  },
+                  itemCount: 20,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _NotificationItem extends StatelessWidget {
+  const _NotificationItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: const CircleAvatar(
+        backgroundColor: Colors.amber,
+        child: Icon(
+          Icons.person,
+          color: Colors.black,
+        ),
+      ),
+      title: const Text('515'),
+      subtitle: Text(lorem(paragraphs: 1, words: 4)),
+      trailing: const Text('30 min'),
+    );
+  }
+}
+
+class _GmailFAB extends StatelessWidget {
+  const _GmailFAB({
+    super.key,
+    this.expanded = false,
+    required this.onTap,
+  });
+
+  final _minSize = 50.0;
+  final _maxSize = 145.0;
+  final _iconSize = 24.0;
+
+  final bool expanded;
+  final VoidCallback onTap;
+  // final void Function(bool value) onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    final position = _minSize / 2 - _iconSize / 2;
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        curve: Curves.easeIn,
+        decoration: BoxDecoration(
+          color: Colors.blue[800],
+          borderRadius: BorderRadius.circular(_maxSize),
+        ),
+        width: expanded ? _maxSize : _minSize,
+        height: _minSize,
+        duration: const Duration(milliseconds: 250),
+        child: Stack(
+          children: [
+            Positioned(
+              top: position,
+              left: position,
+              child: const Icon(
+                Icons.message,
+                color: Colors.white,
+              ),
+            ),
+            Positioned(
+              top: position,
+              left: position + 1.5 * _iconSize,
+              child: Text(
+                'Start Chat',
+                style: context.headline4
+                    .copyWith(color: Colors.white, height: 1.3),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

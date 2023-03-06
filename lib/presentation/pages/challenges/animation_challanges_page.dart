@@ -1,4 +1,5 @@
 import 'package:app_ui/presentation/pages/animted_widgets/learn_tween_page.dart';
+import 'package:app_ui/presentation/pages/challenges/gmail_notifications_page.dart';
 import 'package:app_ui/presentation/pages/challenges/shrink_top_list_page.dart';
 import 'package:app_ui/presentation/pages/route_animation/animate_route.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ class AnimationChallPage extends StatelessWidget {
   final List<ChallangePage> challanges = [
     ChallangePage(LearnTweenPage(), 'Learn Tween animation'),
     ChallangePage(ShrinkTopListPage(), 'Shrink Top List Page'),
+    ChallangePage(GmailNotificationsPage(), 'Gmail notification Page'),
   ];
   @override
   Widget build(BuildContext context) {

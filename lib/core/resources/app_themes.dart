@@ -5,6 +5,7 @@ class AppThemes {
   AppThemes._();
 
   static ThemeData lightTheme = ThemeData(
+    useMaterial3: true,
     // fontFamily: 'Inter',
     scaffoldBackgroundColor: AppColors.white,
     appBarTheme: AppBarTheme(
